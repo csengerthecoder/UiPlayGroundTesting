@@ -25,13 +25,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String gridUrl = System.getProperty("gridUrl");
-
-        mainPage = new MainPage(driver, wait);
-        dynamicIdPage = new DynamicIdPage(driver, wait);
-
         if (gridUrl != null && !gridUrl.isBlank()) {
             try {
                 URL url = new URL(gridUrl);
@@ -62,6 +56,11 @@ public class BaseTest {
 
             driver = new ChromeDriver(options);
         }
+
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        mainPage = new MainPage(driver, wait);
+        dynamicIdPage = new DynamicIdPage(driver, wait);
 
         driver.get("http://uitestingplayground.com/home");
     }
