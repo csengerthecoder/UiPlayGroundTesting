@@ -14,6 +14,7 @@ public class MainPage {
     private final By classAttributeButton = By.linkText("Class Attribute");
     private final By hiddenLayersButton = By.linkText("Hidden Layers");
     private final By loadDelayButton = By.linkText("Load Delay");
+    private final By ajaxDataButton = By.linkText("AJAX Data");
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -39,5 +40,9 @@ public class MainPage {
     public LoadDelayPage openLoadDelayPage() {
         click(loadDelayButton);
         return new LoadDelayPage(driver, wait);
+    }
+    public AjaxDataPage openAjaxDataPage() {
+        click(ajaxDataButton);
+        return new AjaxDataPage(driver, wait);
     }
 }
