@@ -11,6 +11,7 @@ public class MainPage {
     private WebDriver driver;
     private WebDriverWait wait;
     private final By dynamicButtonTaskButton = By.linkText("Dynamic ID");
+    private final By classAttributeButton = By.linkText("Class Attribute");
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -19,5 +20,9 @@ public class MainPage {
 
     public void ClickDynamicButtonTaskButton() {
         Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(dynamicButtonTaskButton))).click();
+    }
+
+    public void ClickClassAttributeButton() {
+        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(classAttributeButton))).click();
     }
 }

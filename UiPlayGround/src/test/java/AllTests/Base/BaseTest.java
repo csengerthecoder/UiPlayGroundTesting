@@ -1,5 +1,6 @@
 package AllTests.Base;
 
+import Pages.ClassAttributePage;
 import Pages.DynamicIdPage;
 import Pages.MainPage;
 import org.junit.jupiter.api.AfterEach;
@@ -21,6 +22,7 @@ public class BaseTest {
     protected WebDriverWait wait;
     protected MainPage mainPage;
     protected DynamicIdPage dynamicIdPage;
+    protected ClassAttributePage classAttributePage;
 
     @BeforeEach
     public void setUp() {
@@ -52,6 +54,7 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         mainPage = new MainPage(driver, wait);
         dynamicIdPage = new DynamicIdPage(driver, wait);
+        classAttributePage = new ClassAttributePage(driver, wait);
 
         driver.get("http://uitestingplayground.com/home");
     }
