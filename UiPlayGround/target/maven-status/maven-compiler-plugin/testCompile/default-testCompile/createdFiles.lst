@@ -1,2 +1,3 @@
-AllTests\Tests\DynamicIdPageTest.class
+AllTests\Tests\LoadDelayPageTest.class
 AllTests\Base\BaseTest.class
+AllTests\Tests\DynamicIdPageTest.class

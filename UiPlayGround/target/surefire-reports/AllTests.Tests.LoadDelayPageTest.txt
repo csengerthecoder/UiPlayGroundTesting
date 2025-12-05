@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: AllTests.Tests.DynamicIdPageTest
+Test set: AllTests.Tests.LoadDelayPageTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.376 s -- in AllTests.Tests.DynamicIdPageTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.871 s -- in AllTests.Tests.LoadDelayPageTest

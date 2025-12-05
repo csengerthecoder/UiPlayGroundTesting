@@ -13,21 +13,31 @@ public class MainPage {
     private final By dynamicButtonTaskButton = By.linkText("Dynamic ID");
     private final By classAttributeButton = By.linkText("Class Attribute");
     private final By hiddenLayersButton = By.linkText("Hidden Layers");
+    private final By loadDelayButton = By.linkText("Load Delay");
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
-    public void ClickDynamicButtonTaskButton() {
-        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(dynamicButtonTaskButton))).click();
+    private void click(By locator) {
+        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(locator))).click();
     }
 
-    public void ClickClassAttributeButton() {
-        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(classAttributeButton))).click();
+    public HiddenLayersPage openHiddenLayersPage() {
+        click(hiddenLayersButton);
+        return new HiddenLayersPage(driver, wait);
     }
-
-    public void ClickHiddenLayersButton() {
-        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(hiddenLayersButton))).click();
+    public ClassAttributePage openClassAttributePage() {
+        click(classAttributeButton);
+        return new ClassAttributePage(driver, wait);
+    }
+    public DynamicIdPage openDynamicIdPage() {
+        click(dynamicButtonTaskButton);
+        return new DynamicIdPage(driver, wait);
+    }
+    public LoadDelayPage openLoadDelayPage() {
+        click(loadDelayButton);
+        return new LoadDelayPage(driver, wait);
     }
 }

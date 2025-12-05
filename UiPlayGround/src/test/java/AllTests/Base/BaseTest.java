@@ -22,9 +22,6 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected MainPage mainPage;
-    protected DynamicIdPage dynamicIdPage;
-    protected ClassAttributePage classAttributePage;
-    protected HiddenLayersPage hiddenLayersPage;
 
     @BeforeEach
     public void setUp() {
@@ -55,10 +52,6 @@ public class BaseTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         mainPage = new MainPage(driver, wait);
-        dynamicIdPage = new DynamicIdPage(driver, wait);
-        classAttributePage = new ClassAttributePage(driver, wait);
-        hiddenLayersPage = new HiddenLayersPage(driver, wait);
-
         driver.get("http://uitestingplayground.com/home");
     }
 

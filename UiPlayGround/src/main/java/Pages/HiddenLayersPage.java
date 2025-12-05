@@ -19,9 +19,9 @@ public class HiddenLayersPage {
     }
 
     public boolean isCorrectButtonClicked() {
-        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(hiddenButton))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(hiddenButton)).click();
         try {
-            Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(correctButton))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(correctButton)).click();
             System.out.println("The correct button has been clicked");
             return true;
         } catch (Exception e) {

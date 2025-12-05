@@ -1,2 +1,3 @@
-Pages\DynamicIdPage.class
 Pages\MainPage.class
+Pages\LoadDelayPage.class
+Pages\DynamicIdPage.class

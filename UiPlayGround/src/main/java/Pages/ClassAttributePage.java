@@ -18,12 +18,8 @@ public class ClassAttributePage {
     }
 
     public boolean ClickClassAttributeButton() {
-        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(correctButton))).click();
-        if (acceptAlert()) {
-            return true;
-        } else {
-            return false;
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(correctButton)).click();
+        return acceptAlert();
     }
 
     public boolean acceptAlert() {

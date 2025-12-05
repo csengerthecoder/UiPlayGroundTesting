@@ -19,7 +19,7 @@ public class DynamicIdPage {
 
     public boolean ClickTheButton() {
         try {
-            Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(dynamicIdButton))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(dynamicIdButton)).click();
             System.out.println("Button clicked succesfully");
             return true;
         } catch (Exception e) {
