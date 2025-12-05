@@ -8,9 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -22,19 +27,42 @@ public class BaseTest {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String gridUrl = System.getProperty("gridUrl");
+
         mainPage = new MainPage(driver, wait);
         dynamicIdPage = new DynamicIdPage(driver, wait);
 
-        ChromeOptions options = new ChromeOptions();
-        String osName = System.getProperty("os.name", "").toLowerCase();
-        String ci = System.getenv("CI");
+        if (gridUrl != null && !gridUrl.isBlank()) {
+            try {
+                URL url = new URL(gridUrl);
+                ChromeOptions options = new ChromeOptions();
+                driver = new RemoteWebDriver(url, options);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Invalid gridUrl: " + gridUrl, e);
+            }
+        } else {
+            ChromeOptions options = new ChromeOptions();
 
-        if (osName.contains("linux") || (ci != null && ci.equalsIgnoreCase("true"))) {
-            options.addArguments("--headless=new");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1920,1080");
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+            options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--disable-features=PasswordManagerOnboarding,PasswordLeakDetection");
+
+            String osName = System.getProperty("os.name", "").toLowerCase();
+            String ci = System.getenv("CI");
+
+            if (osName.contains("linux") || (ci != null && ci.equalsIgnoreCase("true"))) {
+                options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--window-size=1920,1080");
+            }
+
+            driver = new ChromeDriver(options);
         }
+
         driver.get("http://uitestingplayground.com/home");
     }
 
