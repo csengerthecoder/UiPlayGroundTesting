@@ -2,6 +2,7 @@ package AllTests.Base;
 
 import Pages.ClassAttributePage;
 import Pages.DynamicIdPage;
+import Pages.HiddenLayersPage;
 import Pages.MainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +24,7 @@ public class BaseTest {
     protected MainPage mainPage;
     protected DynamicIdPage dynamicIdPage;
     protected ClassAttributePage classAttributePage;
+    protected HiddenLayersPage hiddenLayersPage;
 
     @BeforeEach
     public void setUp() {
@@ -55,6 +57,7 @@ public class BaseTest {
         mainPage = new MainPage(driver, wait);
         dynamicIdPage = new DynamicIdPage(driver, wait);
         classAttributePage = new ClassAttributePage(driver, wait);
+        hiddenLayersPage = new HiddenLayersPage(driver, wait);
 
         driver.get("http://uitestingplayground.com/home");
     }

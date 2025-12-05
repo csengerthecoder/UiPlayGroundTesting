@@ -12,6 +12,7 @@ public class MainPage {
     private WebDriverWait wait;
     private final By dynamicButtonTaskButton = By.linkText("Dynamic ID");
     private final By classAttributeButton = By.linkText("Class Attribute");
+    private final By hiddenLayersButton = By.linkText("Hidden Layers");
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -24,5 +25,9 @@ public class MainPage {
 
     public void ClickClassAttributeButton() {
         Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(classAttributeButton))).click();
+    }
+
+    public void ClickHiddenLayersButton() {
+        Objects.requireNonNull(wait.until(ExpectedConditions.elementToBeClickable(hiddenLayersButton))).click();
     }
 }
