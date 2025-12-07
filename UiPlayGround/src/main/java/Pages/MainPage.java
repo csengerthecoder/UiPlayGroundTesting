@@ -15,6 +15,7 @@ public class MainPage {
     private final By hiddenLayersButton = By.linkText("Hidden Layers");
     private final By loadDelayButton = By.linkText("Load Delay");
     private final By ajaxDataButton = By.linkText("AJAX Data");
+    private final By scrollBars = By.linkText("Scrollbars");
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -44,5 +45,9 @@ public class MainPage {
     public AjaxDataPage openAjaxDataPage() {
         click(ajaxDataButton);
         return new AjaxDataPage(driver, wait);
+    }
+    public ScrollBarPage openScrollBarPage() {
+        click(scrollBars);
+        return new ScrollBarPage(driver, wait);
     }
 }
