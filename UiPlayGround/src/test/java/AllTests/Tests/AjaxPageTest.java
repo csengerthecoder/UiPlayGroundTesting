@@ -5,7 +5,7 @@ import Pages.AjaxDataPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AjaxDataPageTest extends BaseTest {
+public class AjaxPageTest extends BaseTest {
 
     @Test
     public void AjaxDataButtonTest() {
