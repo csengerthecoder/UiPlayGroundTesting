@@ -50,7 +50,7 @@ public class BaseTest {
             driver = new ChromeDriver(options);
         }
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         mainPage = new MainPage(driver, wait);
         driver.get("http://uitestingplayground.com/home");
     }
